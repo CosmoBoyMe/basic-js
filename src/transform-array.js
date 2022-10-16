@@ -19,10 +19,11 @@ function transform(arr) {
   }
   const result = [];
 
-  for (let i = 0; i < arr.length; i += 1) {
-    const prevItem = result[i - 1];
-    const nextItem = arr[i + 1];
-    switch (arr[i]) {
+  for (let index = 0; index < arr.length; index += 1) {
+    const currentItem = arr[index];
+    const prevItem = result[index - 1];
+    const nextItem = arr[index + 1];
+    switch (currentItem) {
       case "--double-next":
         if (nextItem !== undefined) {
           result.push(nextItem);
@@ -39,11 +40,11 @@ function transform(arr) {
         }
         break;
       case "--discard-next": {
-        i += 1;
+        index += 1;
         break;
       }
       default:
-        result.push(arr[i]);
+        result.push(currentItem);
     }
   }
   return result;
