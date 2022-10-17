@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
 /**
  * Given an array with heights, sort them except if the value is -1.
@@ -11,11 +11,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
-function sortByHeight(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function sortByHeight(array) {
+  let deleteDigits = array.filter((item) => item !== -1);
+  const sortedArray = deleteDigits.sort((a, b) => a - b);
+
+  const newArr = [];
+  let sortedArrayIndex = 0;
+  array.forEach((item) => {
+    if (item === -1) {
+      newArr.push(item);
+    } else {
+      newArr.push(sortedArray[sortedArrayIndex]);
+      sortedArrayIndex += 1;
+    }
+  });
+  return newArr;
 }
 
 module.exports = {
-  sortByHeight
+  sortByHeight,
 };
